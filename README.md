@@ -1,7 +1,7 @@
 [//]: # (Image References)
 
-[image1]: ./other_ims/dog1.png "Sample output"
-[image2]: ./other_ims/human1.png "Sample output"
+[image1]: ./other_ims/dog2.jpg "Sample output"
+[image2]: ./other_ims/human1.jpg "Sample output"
 [image3]: ./images/vgg16_model_draw.png "VGG16 Model Figure"
 
 
