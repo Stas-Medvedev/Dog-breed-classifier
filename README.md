@@ -1,8 +1,8 @@
 [//]: # (Image References)
 
-[image1]: ./other_ims/dog2.jpg "Sample output"
-[image2]: ./other_ims/human1.jpg "Sample output"
-[image3]: ./images/vgg16_model_draw.png "VGG16 Model Figure"
+[image1]: ./sample_outputs/dog2.jpg "Sample output"
+[image2]: ./sample_outputs/human1.jpg "Sample output"
+[image3]: ./sample_outputs/Godzilla.jpg "Sample output"
 
 
 ## Project Overview
@@ -23,58 +23,18 @@ The algorithm has several parts with the following workflow:
   - If no dog is found, the image goes to the human face detector
 - Face detector checks the image
   - If an image is detected, the dog breed classifier checks the image and return the most likely breed, and the app run ends
-  - If no human is detected, the app displays 
+  - If no human is detected, the app displays a message as in the sample below, and the app run ends  
+![Sample Output][image3]
 
+### Dog detector
+The dog detector uses the pre-trained VGG-16 network to predict the overall contents of the input image. If the predicted class is between 151 and 268, which are the various breeds that VGG-16 can identify, the dog detector marks the image as containing a dog.
 
-## Project Instructions
+### Face detector
+The face detector uses a Haar feature-based cascade classifier through OpenCV.
 
-### Instructions
+### Breed classification
+There were two approaches to classify the breeds, both of which used convolutional neural networks (CNN).  
 
-1. Clone the repository and navigate to the downloaded folder.
-	
-	```	
-		git clone https://github.com/udacity/deep-learning-v2-pytorch.git
-		cd deep-learning-v2-pytorch/project-dog-classification
-	```
-    
-__NOTE:__ if you are using the Udacity workspace, you *DO NOT* need to re-download the datasets in steps 2 and 3 - they can be found in the `/data` folder as noted within the workspace Jupyter notebook.
+The first approach was to build and train a CNN from scratch. That resulted in a CNN that classified the breeds with 13% accuracy.
 
-2. Download the [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip).  Unzip the folder and place it in the repo, at location `path/to/dog-project/dogImages`.  The `dogImages/` folder should contain 133 folders, each corresponding to a different dog breed.
-3. Download the [human dataset](http://vis-www.cs.umass.edu/lfw/lfw.tgz).  Unzip the folder and place it in the repo, at location `path/to/dog-project/lfw`.  If you are using a Windows machine, you are encouraged to use [7zip](http://www.7-zip.org/) to extract the folder. 
-4. Make sure you have already installed the necessary Python packages according to the README in the program repository.
-5. Open a terminal window and navigate to the project folder. Open the notebook and follow the instructions.
-	
-	```
-		jupyter notebook dog_app.ipynb
-	```
-
-__NOTE:__ While some code has already been implemented to get you started, you will need to implement additional functionality to successfully answer all of the questions included in the notebook. __Unless requested, do not modify code that has already been included.__
-
-__NOTE:__ In the notebook, you will need to train CNNs in PyTorch.  If your CNN is taking too long to train, feel free to pursue one of the options under the section __Accelerating the Training Process__ below.
-
-
-
-## (Optionally) Accelerating the Training Process 
-
-If your code is taking too long to run, you will need to either reduce the complexity of your chosen CNN architecture or switch to running your code on a GPU.  If you'd like to use a GPU, you can spin up an instance of your own:
-
-#### Amazon Web Services
-
-You can use Amazon Web Services to launch an EC2 GPU instance. (This costs money, but enrolled students should see a coupon code in their student `resources`.)
-
-## Evaluation
-
-Your project will be reviewed by a Udacity reviewer against the CNN project rubric.  Review this rubric thoroughly and self-evaluate your project before submission.  All criteria found in the rubric must meet specifications for you to pass.
-
-
-## Project Submission
-
-Your submission should consist of the github link to your repository.  Your repository should contain:
-- The `dog_app.ipynb` file with fully functional code, all code cells executed and displaying output, and all questions answered.
-- An HTML or PDF export of the project notebook with the name `report.html` or `report.pdf`.
-
-Please do __NOT__ include any of the project data sets provided in the `dogImages/` or `lfw/` folders.
-
-### Ready to submit your project?
-
-Click on the "Submit Project" button in the classroom and follow the instructions to submit!
+The second approach was to use the transfer learning method and fine-tune a pre-trained CNN. I tried the VGG-19 and the ResNet-50 networks in this approach, which produced about 76% accuracy for both models.
