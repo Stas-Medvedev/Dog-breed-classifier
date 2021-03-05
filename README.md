@@ -7,12 +7,23 @@
 
 ## Project Overview
 
-The algorithm in this project identifies the breed of a dog in a given image. It can also detect human faces, and if it receives a picture of a human, it returns the resembling breed.
-Welcome to the Convolutional Neural Networks (CNN) project in the AI Nanodegree! In this project, you will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images.  Given an image of a dog, your algorithm will identify an estimate of the canine’s breed.  If supplied an image of a human, the code will identify the resembling dog breed.  
+The algorithm in this project identifies the breed of a dog in a given image. It can also detect human faces, and if it receives a picture of a human, it returns the resembling breed. Here are a couple of sample outputs:  
 
 ![Sample Output][image1]	![Sample Output][image2]
 
-Along with exploring state-of-the-art CNN models for classification and localization, you will make important design decisions about the user experience for your app.  Our goal is that by completing this lab, you understand the challenges involved in piecing together a series of models designed to perform various tasks in a data processing pipeline.  Each model has its strengths and weaknesses, and engineering a real-world application often involves solving many problems without a perfect answer.  Your imperfect solution will nonetheless create a fun user experience!
+## Datasets
+
+The datasets used in the project can be downloaded from the following links: [dog dataset](https://s3-us-west-1.amazonaws.com/udacity-aind/dog-project/dogImages.zip) (.zip file) and [human dataset](http://vis-www.cs.umass.edu/lfw/lfw.tgz) (.tgz file).
+
+## Implementation
+
+The algorithm has several parts with the following workflow:
+- Dog detector checks the input image for dogs
+  - If a dog is found, the dog breed classifier checks the image and returns the most likely breed, and the app run ends
+  - If no dog is found, the image goes to the human face detector
+- Face detector checks the image
+  - If an image is detected, the dog breed classifier checks the image and return the most likely breed, and the app run ends
+  - If no human is detected, the app displays 
 
 
 ## Project Instructions
