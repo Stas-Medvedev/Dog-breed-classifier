@@ -33,7 +33,7 @@ The dog detector uses the pre-trained VGG-16 network to predict the overall cont
 The face detector uses a Haar feature-based cascade classifier through OpenCV.
 
 ### Breed classification
-There were two approaches to classify the breeds, both of which used convolutional neural networks (CNN).  
+There were two approaches to classify the breeds, both of which used convolutional neural networks (CNN) coded with PyTorch.  
 
 The first approach was to build and train a CNN from scratch. That resulted in a CNN that classified the breeds with 13% accuracy.
 
