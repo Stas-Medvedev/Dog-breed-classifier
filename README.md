@@ -38,3 +38,5 @@ There were two approaches to classify the breeds, both of which used convolution
 The first approach was to build and train a CNN from scratch. That resulted in a CNN that classified the breeds with 13% accuracy.
 
 The second approach was to use the transfer learning method and fine-tune a pre-trained CNN. I tried the VGG-19 and the ResNet-50 networks in this approach, which produced about 76% accuracy for both models.
+
+**Update (3/13/21):** Used ResNet-101 with modified dataloaders and achieved 87% prediction accuracy on the test set.
